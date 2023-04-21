@@ -1,0 +1,8 @@
+# Folders
+bin/**
+build/**
+lib/**
+include/SDL2/**
+
+# Files
+**.DS_Store
