@@ -3,6 +3,8 @@
 
 // Variables
 SDL_Renderer* Engine::renderer;
+Vector2 Engine::mousePos;
+bool Engine::clicking;
 
 // Constructor
 Engine::Engine(){
@@ -24,8 +26,12 @@ Engine::Engine(){
     throw("Failed to create an SDL renderer.\n");
   }
 
+  // Staring SDL2 subsystems
+  IMG_Init(IMG_INIT_PNG);
+
   // We're running!
   running = true;
+  clicking  = false;
 }
 
 // Functions
@@ -33,11 +39,24 @@ void Engine::Update(){
   // Getting events
   SDL_Event event;
 
+  // Window position
+  int wx, wy;
+  SDL_GetWindowPosition(window, &wx, &wy);
+
   // Polling
   while(SDL_PollEvent(&event)){
     switch(event.type){
     case SDL_QUIT:
       running = false;
+      break;
+    case SDL_MOUSEMOTION:
+      Engine::mousePos = Vector2(event.motion.x - wx, event.motion.y - wy);
+      break;
+    case SDL_MOUSEBUTTONDOWN:
+      clicking = true;
+      break;
+    case SDL_MOUSEBUTTONUP:
+      clicking = false;
       break;
     }
   }

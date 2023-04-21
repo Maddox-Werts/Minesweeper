@@ -5,6 +5,8 @@
 // Includes
 /// External
 #include "externals.h"
+/// Engine
+#include "vectors.h"
 
 // Constants
 #define SCR_WIDTH 512
@@ -19,6 +21,8 @@ private:
 public:
   // Variables
   static SDL_Renderer* renderer;
+  static Vector2 mousePos;
+  static bool clicking;
   bool running;
 
   // Constructor
