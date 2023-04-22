@@ -22,17 +22,30 @@ private:
   std::vector<int> grid_show;
 
   SDL_Texture* texture;
-  int flags;
+
+  int savedClick = 0;
+  bool didClick;
+
+  bool cascading;
+
+  bool win;
 
   // Functions
   void createGrid(Vector2 mousePos);
 
   int getSurrounding(Vector2 tilePos);
   void revealTiles(Vector2 mousePos);
+  void spawnCascade(Vector2 position);
+
+  void _leftClick();
+  void _rightClick();
+
+  void clickDetection();
 
 public:
   // Variables
   bool playing;
+  int flags;
 
   // Constructors
   Tilemap();

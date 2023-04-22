@@ -4,7 +4,7 @@
 // Variables
 SDL_Renderer* Engine::renderer;
 Vector2 Engine::mousePos;
-bool Engine::clicking;
+int Engine::clicking;
 
 // Constructor
 Engine::Engine(){
@@ -39,10 +39,6 @@ void Engine::Update(){
   // Getting events
   SDL_Event event;
 
-  // Window position
-  int wx, wy;
-  SDL_GetWindowPosition(window, &wx, &wy);
-
   // Polling
   while(SDL_PollEvent(&event)){
     switch(event.type){
@@ -50,13 +46,18 @@ void Engine::Update(){
       running = false;
       break;
     case SDL_MOUSEMOTION:
-      Engine::mousePos = Vector2(event.motion.x - wx, event.motion.y - wy);
+      Engine::mousePos = Vector2(event.motion.x, event.motion.y);
       break;
     case SDL_MOUSEBUTTONDOWN:
-      clicking = true;
+      if(event.button.button == SDL_BUTTON_LEFT){
+        clicking = 1;
+      }
+      else if(event.button.button == SDL_BUTTON_RIGHT){
+        clicking = 2;
+      }
       break;
     case SDL_MOUSEBUTTONUP:
-      clicking = false;
+      clicking = 0;
       break;
     }
   }

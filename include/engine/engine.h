@@ -10,7 +10,9 @@
 
 // Constants
 #define SCR_WIDTH 512
-#define SCR_HEIGHT 512
+#define SCR_HEIGHT 562
+
+#define SCR_H_BUFFER 50
 
 // Classes
 class Engine{
@@ -22,7 +24,7 @@ public:
   // Variables
   static SDL_Renderer* renderer;
   static Vector2 mousePos;
-  static bool clicking;
+  static int clicking;
   bool running;
 
   // Constructor
