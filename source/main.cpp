@@ -5,12 +5,14 @@
 #include <engine/engine.h>
 /// Game
 #include <game/tilemap.h>
+#include <game/navbar.h>
 
 // Entry Point
 int main(int argc, char* argv[]){
   // Creating an engine
   Engine engine = Engine();
   Tilemap tilemap = Tilemap();
+  Navbar navbar = Navbar(&tilemap);
 
   // Game loop
   while(engine.running){
@@ -22,9 +24,11 @@ int main(int argc, char* argv[]){
 
     // Game code..
     tilemap.Update();
+    navbar.Update();
 
     // Render code..
     tilemap.Draw();
+    navbar.Draw();
 
     // Displaying
     engine.Display();

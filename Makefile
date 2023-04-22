@@ -12,6 +12,7 @@ compile:
 	g++ -c -I include source/engine/vectors.cpp -o bin/vectors.o
 	g++ -c -I include source/engine/engine.cpp -o bin/engine.o
 	g++ -c -I include source/game/tilemap.cpp -o bin/tilemap.o
+	g++ -c -I include source/game/navbar.cpp -o bin/navbar.o
 	g++ -c -I include source/main.cpp -o bin/main.o
 
 link:
