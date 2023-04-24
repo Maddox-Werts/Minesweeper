@@ -9,6 +9,8 @@
 #include <fstream>
 #include <vector>
 #include <math.h>
+#include <cstdlib>
+#include <ctime>
 /// SDL2
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

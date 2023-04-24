@@ -1,3 +1,6 @@
+// For windows
+#define SDL_MAIN_HANDLED
+
 // Includes
 /// External
 #include <engine/externals.h>

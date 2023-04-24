@@ -3,10 +3,7 @@ LIBS:= -lSDL2main -lSDL2 -lSDL2_image
 TARGET:= minesweeper
 
 # Instructions
-build: clrscr compile link run
-
-clrscr:
-	clear
+build: compile link run
 
 compile:
 	g++ -c -I include source/engine/vectors.cpp -o bin/vectors.o
@@ -16,7 +13,7 @@ compile:
 	g++ -c -I include source/main.cpp -o bin/main.o
 
 link:
-	g++ -L lib $(LIBS) bin/*.o -o build/$(TARGET)
+	g++ bin/*.o -L lib $(LIBS) -o build/$(TARGET)
 
 cpydat:
 	cp data -r build
