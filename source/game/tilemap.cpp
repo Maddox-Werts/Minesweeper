@@ -240,6 +240,26 @@ void Tilemap::_rightClick(){
     grid_flag[_gridPos] = 1;
   }
 }
+void Tilemap::winDetection(){
+  // How many bombs are there, and do they match
+  // Up with our flag positions?
+  int _matchedBombs = 0;
+
+  for(int y = 0; y < GRID_H; y++){
+    for(int x = 0; x < GRID_W; x++){
+      if(grid_bomb[y*GRID_H+x]
+      && grid_flag[y*GRID_H+x]){
+        _matchedBombs++;
+      }
+    }
+  }
+
+  // Matched bombs == Bombs?
+  if(_matchedBombs == GRID_B){
+    playing = false;
+    win = true;
+  }
+}
 void Tilemap::clickDetection(){
   // Are we even playing?
   if(!playing) {return;}
@@ -282,6 +302,9 @@ void Tilemap::clickDetection(){
 
 /// Public
 void Tilemap::Update(){
+  // Win detection
+  winDetection();
+
   // Click detection
   clickDetection();
 }

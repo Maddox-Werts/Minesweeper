@@ -39,6 +39,7 @@ private:
   void _leftClick();
   void _rightClick();
 
+  void winDetection();
   void clickDetection();
 
 public:
