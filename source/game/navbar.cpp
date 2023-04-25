@@ -166,7 +166,101 @@ void Navbar::_drawFace(){
   SDL_RenderCopy(Engine::renderer, texture, &frame, &rect);
 }
 void Navbar::_drawTime(){
-  
+  if(tilemap->gameTime < 10){
+    // Positional rect
+    SDL_Rect rect;
+    rect.x = SCR_WIDTH / 1.2f;
+    rect.y = 0;
+    rect.w = 50; rect.h = 50;
+
+    // Frame
+    SDL_Rect frame;
+    frame.x = 0; frame.y = 0;
+    frame.w = 16; frame.h = 16;
+
+    // What number?
+    switch(tilemap->gameTime){
+    case 0:
+      frame.x = 0;
+      frame.y = 0;
+      break;
+    case 1:
+      frame.x = 1;
+      frame.y = 0;
+      break;
+    case 2:
+      frame.x = 2;
+      frame.y = 0;
+      break;
+    case 3:
+      frame.x = 3;
+      frame.y = 0;
+      break;
+    case 4:
+      frame.x = 4;
+      frame.y = 0;
+      break;
+    case 5:
+      frame.x = 0;
+      frame.y = 1;
+      break;
+    case 6:
+      frame.x = 1;
+      frame.y = 1;
+      break;
+    case 7:
+      frame.x = 2;
+      frame.y = 1;
+      break;
+    case 8:
+      frame.x = 3;
+      frame.y = 1;
+      break;
+    case 9:
+      frame.x = 4;
+      frame.y = 1;
+      break;
+    }
+
+    // Scaling to size
+    frame.x *= 16;
+    frame.y *= 16;
+
+    // Drawing
+    SDL_SetRenderDrawColor(Engine::renderer, 255,255,255, 1);
+    SDL_RenderCopy(Engine::renderer, texture, &frame, &rect);
+  }
+  else{
+    // Positional rect
+    SDL_Rect rect;
+    rect.x = SCR_WIDTH / 1.2f;
+    rect.y = 0;
+    rect.w = 50; rect.h = 50;
+
+    // Frame
+    SDL_Rect frame;
+    frame.x = 0; frame.y = 0;
+    frame.w = 16; frame.h = 16;
+
+    Vector2 fPos = _getNumber(tilemap->gameTime%10);
+    frame.x = fPos.x;
+    frame.y = fPos.y;
+
+    // Drawing
+    SDL_SetRenderDrawColor(Engine::renderer, 255,255,255, 1);
+    SDL_RenderCopy(Engine::renderer, texture, &frame, &rect);
+
+    // The second one
+    rect.x -= 50;
+
+    fPos = _getNumber((tilemap->gameTime / 10)%10);
+    frame.x = fPos.x;
+    frame.y = fPos.y;
+
+    // Drawing
+    SDL_SetRenderDrawColor(Engine::renderer, 255,255,255, 1);
+    SDL_RenderCopy(Engine::renderer, texture, &frame, &rect);
+  }
 }
 Vector2 Navbar::_getNumber(int number){
   // Result

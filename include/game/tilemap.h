@@ -25,8 +25,10 @@ private:
 
   int savedClick = 0;
   bool didClick;
+  bool gameBegan;
 
   bool cascading;
+  float timepassed;
 
   // Functions
   void _init();
@@ -47,6 +49,7 @@ public:
   bool playing;
   bool win;
   int flags;
+  int gameTime;
 
   // Constructors
   Tilemap();

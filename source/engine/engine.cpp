@@ -2,6 +2,7 @@
 #include <engine/engine.h>
 
 // Variables
+double Engine::deltaTime;
 SDL_Renderer* Engine::renderer;
 Vector2 Engine::mousePos;
 int Engine::clicking;
@@ -62,6 +63,11 @@ void Engine::Update(){
       break;
     }
   }
+
+  // Calculate deltaTime
+  Uint32 now = SDL_GetTicks();
+  Engine::deltaTime = (now - last) / 1000.0f;
+  last = now;
 }
 
 void Engine::Clear(){

@@ -40,6 +40,9 @@ void Tilemap::_init(){
   didClick = true;
   cascading = false;
   win = true;
+  gameTime = 0;
+  timepassed = 0;
+  gameBegan = false;
 }
 void Tilemap::createGrid(Vector2 mousePos){
   for(int i = 0; i < GRID_B; i++){
@@ -66,6 +69,8 @@ void Tilemap::createGrid(Vector2 mousePos){
     // Apply position
     grid_bomb[_bombPos.y*GRID_H+_bombPos.x] = 1;
   }
+
+  gameBegan = true;
 }
 int Tilemap::getSurrounding(Vector2 tilePos){
   // Result
@@ -307,6 +312,20 @@ void Tilemap::Update(){
 
   // Click detection
   clickDetection();
+
+  // Time passing
+  if(gameBegan
+  && playing){
+    if(timepassed >= 1.0f){
+      timepassed = 0;
+      gameTime++;
+
+      if(gameTime > 99) {gameTime = 99;}
+    }
+    else{
+      timepassed += (float)Engine::deltaTime;
+    }
+  }
 }
 void Tilemap::Draw(){
   // Getting sizes

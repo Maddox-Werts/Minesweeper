@@ -19,9 +19,11 @@ class Engine{
 private:
   // Variables
   SDL_Window* window;
+  Uint32 last;
 
 public:
   // Variables
+  static double deltaTime;
   static SDL_Renderer* renderer;
   static Vector2 mousePos;
   static int clicking;
