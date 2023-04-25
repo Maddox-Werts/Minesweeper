@@ -9,6 +9,7 @@
 /// Game
 #include <game/tilemap.h>
 #include <game/navbar.h>
+#include <game/message.h>
 
 // Entry Point
 int main(int argc, char* argv[]){
@@ -16,6 +17,10 @@ int main(int argc, char* argv[]){
   Engine engine = Engine();
   Tilemap tilemap = Tilemap();
   Navbar navbar = Navbar(&tilemap);
+
+  // Messages
+  Message gameOver("Game Over!");
+  Message youWin("You Win!");
 
   // Game loop
   while(engine.running){
@@ -32,6 +37,16 @@ int main(int argc, char* argv[]){
     // Render code..
     tilemap.Draw();
     navbar.Draw();
+  
+    /// Messages?
+    if(!tilemap.playing){
+      if(tilemap.win){
+        youWin.Draw();
+      }
+      else{
+        gameOver.Draw();
+      }
+    }
 
     // Displaying
     engine.Display();

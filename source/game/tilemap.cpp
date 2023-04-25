@@ -24,7 +24,7 @@ void Tilemap::_init(){
   }
 
   // Loading texture
-  SDL_Surface* surf = IMG_Load("data/tileset.png");
+  SDL_Surface* surf = IMG_Load("data/sprites/tileset.png");
   if(surf == NULL){
     printf("ERROR: %s\n", IMG_GetError());
     throw("Failed to load tiles.\n");

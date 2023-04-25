@@ -28,6 +28,7 @@ Engine::Engine(){
 
   // Staring SDL2 subsystems
   IMG_Init(IMG_INIT_PNG);
+  TTF_Init();
 
   // We're running!
   running = true;

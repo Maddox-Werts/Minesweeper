@@ -8,7 +8,7 @@ Navbar::Navbar(Tilemap* tilemap){
   didClick = false;
 
   // Getting texture
-  SDL_Surface* surf = IMG_Load("data/glyph.png");
+  SDL_Surface* surf = IMG_Load("data/sprites/glyph.png");
   if(surf == NULL){
     throw("Failed to load Glyph surface.\n");
   }
