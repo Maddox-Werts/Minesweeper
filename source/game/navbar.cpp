@@ -5,6 +5,7 @@
 Navbar::Navbar(Tilemap* tilemap){
   // Setting variables
   this->tilemap = tilemap;
+  didClick = false;
 
   // Getting texture
   SDL_Surface* surf = IMG_Load("data/glyph.png");
@@ -225,8 +226,27 @@ Vector2 Navbar::_getNumber(int number){
 /// Public
 void Navbar::Update(){
   // Did we click on the face?
-  if(Engine::clicking){
+  if(Engine::clicking
+  && !didClick){
+    // Clicking!
+    didClick = true;
+
+    // Getting the mouse position
     Vector2 mPos = Engine::mousePos;
+
+    // Constant
+    const int mid_w = SCR_WIDTH / 2;
+
+    // Face clicking?
+    if(mPos.x >= mid_w - 50
+    && mPos.x <= mid_w + 50
+    && mPos.y <= SCR_H_BUFFER){
+      // Restart game
+      tilemap->Reset();
+    }
+  }
+  if(!Engine::clicking){
+    didClick = false;
   }
 }
 void Navbar::Draw(){

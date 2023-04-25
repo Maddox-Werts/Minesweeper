@@ -29,6 +29,7 @@ private:
   bool cascading;
 
   // Functions
+  void _init();
   void createGrid(Vector2 mousePos);
 
   int getSurrounding(Vector2 tilePos);

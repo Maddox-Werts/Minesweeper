@@ -3,6 +3,17 @@
 
 // Constructors
 Tilemap::Tilemap(){
+  _init();
+}
+
+// Functions
+/// Private
+void Tilemap::_init(){
+  // Reset all of our grids
+  grid_bomb.clear();
+  grid_flag.clear();
+  grid_show.clear();
+
   // Adding all tiles to the map
   for(int y = 0; y < GRID_H; y++){
     for(int x = 0; x < GRID_W; x++){
@@ -26,13 +37,10 @@ Tilemap::Tilemap(){
   playing = true;
   flags = GRID_B;
   savedClick = 0;
-  didClick = false;
+  didClick = true;
   cascading = false;
   win = true;
 }
-
-// Functions
-/// Private
 void Tilemap::createGrid(Vector2 mousePos){
   for(int i = 0; i < GRID_B; i++){
     // Completly random number
@@ -68,9 +76,9 @@ int Tilemap::getSurrounding(Vector2 tilePos){
     for(int x = -1; x < 2; x++){
       // Out of bounds?
       if(tilePos.x + x < 0
-      || tilePos.x + x > GRID_W
+      || tilePos.x + x >= GRID_W
       || tilePos.y + y < 0
-      || tilePos.y + y > GRID_H){
+      || tilePos.y + y >= GRID_H){
         continue;
       }
 
@@ -397,4 +405,7 @@ void Tilemap::Draw(){
 void Tilemap::Reset(){
   // Resetting the game! (VERY DIFFICULT)
   printf("Reset.\n");
+
+  // Reset!
+  _init();
 }

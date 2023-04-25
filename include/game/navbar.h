@@ -17,6 +17,8 @@ private:
   Tilemap* tilemap;
   SDL_Texture* texture;
 
+  bool didClick;
+
   // Functions
   void _drawBackground();
   void _drawFlagCounter();
