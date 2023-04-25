@@ -15,12 +15,15 @@ class Navbar{
 private:
   // Variables
   Tilemap* tilemap;
+  SDL_Texture* texture;
 
   // Functions
   void _drawBackground();
   void _drawFlagCounter();
   void _drawFace();
   void _drawTime();
+
+  Vector2 _getNumber(int number);
 
 public:
   // Variables

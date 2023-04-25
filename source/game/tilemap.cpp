@@ -393,3 +393,8 @@ void Tilemap::Draw(){
 
   // DEBUG
 }
+
+void Tilemap::Reset(){
+  // Resetting the game! (VERY DIFFICULT)
+  printf("Reset.\n");
+}

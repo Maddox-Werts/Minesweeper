@@ -28,8 +28,6 @@ private:
 
   bool cascading;
 
-  bool win;
-
   // Functions
   void createGrid(Vector2 mousePos);
 
@@ -45,6 +43,7 @@ private:
 public:
   // Variables
   bool playing;
+  bool win;
   int flags;
 
   // Constructors
@@ -53,6 +52,8 @@ public:
   // Functions
   void Update();
   void Draw();
+
+  void Reset();
 };
 
 // End definiton
